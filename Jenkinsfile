@@ -22,7 +22,12 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker compose up -d --build'
+                sh '''
+                    docker compose \
+                      --env-file /etc/node-postgres-crud.env \
+                      -p node-js-postgresql-crud-example \
+                      up -d --build
+                '''
             }
         }
 
