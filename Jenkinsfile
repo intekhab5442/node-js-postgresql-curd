@@ -13,6 +13,11 @@ pipeline {
                 sh 'npm ci'
             }
         }
+	stage('Test') {
+            steps {
+       		sh 'npm test'
+    	    }
+	}
 
         stage('Build Docker Image') {
             steps {
