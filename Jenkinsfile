@@ -19,5 +19,17 @@ pipeline {
                 sh 'docker build -t node-postgres-crud:${BUILD_NUMBER} .'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker compose up -d --build'
+            }
+        }
+
+        stage('Smoke Test') {
+            steps {
+                sh 'curl --fail http://localhost:8080'
+            }
+        }
     }
 }
