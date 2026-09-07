@@ -23,10 +23,10 @@ pipeline {
         stage('Deploy') {
             steps {
 		sh '''
-		    API_IMAGE=node-postgres-curd:${BUILD_NUMBER} \
+		    API_IMAGE=node-postgres-crud:${BUILD_NUMBER} \
 	 	    docker compose \
-		      --env-file /etc/node-postgres-curd.env \
-		      -p node-js-postgresql-curd-example \
+		      --env-file /etc/node-postgres-crud.env \
+		      -p node-js-postgresql-crud-example \
 		      up -d	
 		'''
             }
